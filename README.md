@@ -12,7 +12,7 @@
    -wind speed
                
 #### Architecture
-Model-View-Presenter architure is used while developing the code.
+Model-View-Presenter architecture is used while developing the code.
 
 #### Network libraries
 For learning experience , 3 network API's are written using :
