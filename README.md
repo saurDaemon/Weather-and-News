@@ -20,6 +20,12 @@ For learning experience , 3 network API's are written using :
 2. Volley
 3. HttpURLConnection
 
+#### Image loading
+For learning experience , 3 methods are used for image loading :
+1. Glide
+2. Volley ImageLoader
+3. Retrofit 2
+
 #### Json Parsing
 For learning experience , following are the approaches :
 1. GSON 
