@@ -53,6 +53,15 @@ public class WeatherDetails implements Serializable{
 public class Weather implements Serializable
 {
     private String description;
+    private String icon;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public String getDescription() {
         return description;

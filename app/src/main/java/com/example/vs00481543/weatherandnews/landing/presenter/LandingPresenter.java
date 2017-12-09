@@ -1,28 +1,20 @@
 package com.example.vs00481543.weatherandnews.landing.presenter;
 
-import android.app.Activity;
-import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.example.vs00481543.weatherandnews.R;
-import com.example.vs00481543.weatherandnews.dal.NetworkData;
+import com.example.vs00481543.weatherandnews.Network.NetworkData;
 import com.example.vs00481543.weatherandnews.landing.LandingContract;
 import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
-import com.example.vs00481543.weatherandnews.landing.view.LandingActivity;
 import com.example.vs00481543.weatherandnews.landing.view.WeatherDetailsFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,23 +36,18 @@ public class LandingPresenter implements LandingContract.LandPresent {
     public void getWeatherInfo(double lat,double longi) {
 
 //        new getWeatherData().execute();
-        new NetworkData().getNetworkData(this,landingContext,lat,longi);
+        //new NetworkData().getNetworkDataVolley(this,landingContext,lat,longi);
+        new NetworkData().getNetworkDataRetrofit(this,landingContext,lat,longi);
 
     }
 
     @Override
-    public void responseToView(String str) {
+    public void responseToView(WeatherDetails weatherDetails) {
 
-        if(!str.equals(null)&&!str.equals(""))
+        if(weatherDetails!=null)
         {
-             GsonBuilder gsonBuilder=new GsonBuilder();
-             Gson mGson=gsonBuilder.create();
 
-             WeatherDetails weatherDetails = new WeatherDetails();
-             weatherDetails = mGson.fromJson(str,WeatherDetails.class);
-
-             Log.d("", "responseToView: "+ weatherDetails);
-
+              Log.d("", "responseToView: "+ weatherDetails);
 
               WeatherDetailsFragment frag=new WeatherDetailsFragment();
               Bundle bundle=new Bundle();
@@ -84,7 +71,7 @@ public class LandingPresenter implements LandingContract.LandPresent {
             }*/
 
              }
-             Log.d("Response", "responseToView: "+str);
+             Log.d("Response", "responseToView: "+weatherDetails);
     }
 
     @Override

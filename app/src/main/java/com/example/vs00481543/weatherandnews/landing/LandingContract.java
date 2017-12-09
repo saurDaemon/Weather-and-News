@@ -21,7 +21,7 @@ public class LandingContract {
     {
         void getWeatherInfo(double lat,double longi);
 
-        void responseToView(String str);
+        void responseToView(WeatherDetails weatherDetails);
 
         void getLatLong(String str);
 
