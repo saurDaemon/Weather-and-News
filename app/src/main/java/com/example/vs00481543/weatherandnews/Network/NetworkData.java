@@ -19,6 +19,8 @@ import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.lang.reflect.Array;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -34,6 +36,7 @@ public class NetworkData {
 
         public void getNetworkDataVolley(final LandingContract.LandPresent landPresent, final Context context,double latitude,double longitude)
         {
+
             WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&units=metric&type=accurate&APPID=ec6cba60275372b25bed284fded6205d";
 
             RequestQueue requestQueue= VolleySingleton.getInstance(context).getRequestQueue();

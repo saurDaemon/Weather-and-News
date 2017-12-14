@@ -15,6 +15,8 @@ import com.example.vs00481543.weatherandnews.Network.VolleySingleton;
 import com.example.vs00481543.weatherandnews.R;
 import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
 
+import java.lang.reflect.Array;
+
 /**
  * Created by VS00481543 on 29-11-2017.
  */
