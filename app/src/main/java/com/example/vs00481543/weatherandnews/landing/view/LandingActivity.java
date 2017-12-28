@@ -1,9 +1,11 @@
 package com.example.vs00481543.weatherandnews.landing.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -57,13 +59,21 @@ public class LandingActivity extends BaseActivity implements LandingContract.Lan
     {
         locationtext=(EditText) findViewById(R.id.location_id);
 
+        locationtext.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(!hasFocus)
+                    landPresent.hideKeyboard(view);
+            }
+        });
+
         enterButton=(Button) findViewById(R.id.loc_button);
         enterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String location=locationtext.getText().toString();
                 Toast.makeText(LandingActivity.this,"Locations is : "+location,Toast.LENGTH_SHORT).show();
-
+                landPresent.hideKeyboard(view);
                 landPresent.getLatLong(location);
             }
         });

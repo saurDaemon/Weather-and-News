@@ -16,6 +16,7 @@ import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.example.vs00481543.weatherandnews.landing.LandingContract;
 import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
+import com.example.vs00481543.weatherandnews.landing.model.WeatherForecastDetails;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,6 +34,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkData {
 
         private static String WEATHER_URL;
+        private static String APP_ID="ec6cba60275372b25bed284fded6205d";
+        private static String UNIT="metric" ;
+        private static String TYPE="accurate";
 
         public void getNetworkDataVolley(final LandingContract.LandPresent landPresent, final Context context,double latitude,double longitude)
         {
@@ -63,27 +67,53 @@ public class NetworkData {
         }
 
 
-        public void getNetworkDataRetrofit(final LandingContract.LandPresent landPresent,final Context context,double latitude,double longitude)
+        public void getNetworkDataRetrofit(final LandingContract.LandPresent landPresent,final Context context,double latitude,double longitude,String typeRequest)
         {
-            RetrofitApiInterface apiService=ApiClientRetrofit.getRetrofitClient().create(RetrofitApiInterface.class);
+            if(typeRequest.equals("Current")) {
+                RetrofitApiInterface apiService = ApiClientRetrofit.getRetrofitClient().create(RetrofitApiInterface.class);
 
-            Call<WeatherDetails> call = apiService.getWeatherDetails(latitude,longitude,"metric","accurate","ec6cba60275372b25bed284fded6205d");
-            call.enqueue(new Callback<WeatherDetails>() {
-                @Override
-                public void onResponse(Call<WeatherDetails> call, retrofit2.Response<WeatherDetails> response) {
-                    if (response.isSuccessful()) {
-                        Log.d("retrofit", "onResponse: " + response.body());
-                        landPresent.responseToView(response.body());
+                Call<WeatherDetails> call = apiService.getWeatherDetails(latitude, longitude, UNIT, TYPE, APP_ID);
+                call.enqueue(new Callback<WeatherDetails>() {
+                    @Override
+                    public void onResponse(Call<WeatherDetails> call, retrofit2.Response<WeatherDetails> response) {
+                        if (response.isSuccessful()) {
+                            Log.d("retrofit", "onResponse: " + response.body());
+                            landPresent.responseToView(response.body());
+                        }
+                        Log.d("retrofit", "onResponse: " + "fail");
+
                     }
-                    Log.d("retrofit", "onResponse: " + "fail");
 
-                }
+                    @Override
+                    public void onFailure(Call<WeatherDetails> call, Throwable t) {
+                        Log.d("retrofit", "onFailure: " + t);
+                    }
+                });
+            }
 
-                @Override
-                public void onFailure(Call<WeatherDetails> call, Throwable t) {
-                    Log.d("retrofit", "onFailure: " +t);
-                }
-            });
+            else if(typeRequest.equals("Forecast"))
+            {
+                RetrofitForecastInterface apiService=ApiClientRetrofit.getRetrofitClient().create(RetrofitForecastInterface.class);
+
+                Call<WeatherForecastDetails> call=apiService.getWeatherForecastDetails(latitude,longitude, UNIT, TYPE, APP_ID);
+                call.enqueue(new Callback<WeatherForecastDetails>() {
+                    @Override
+                    public void onResponse(Call<WeatherForecastDetails> call, retrofit2.Response<WeatherForecastDetails> response) {
+                        if (response.isSuccessful()) {
+                            Log.d("retrofit", "onResponse: forecast  :" + response.body());
+                            landPresent.responseToForecastView(response.body());
+                        }
+                        Log.d("retrofit", "onResponse: " + "fail");
+                    }
+
+                    @Override
+                    public void onFailure(Call<WeatherForecastDetails> call, Throwable t) {
+
+                        Log.d("retrofit", "onFailure: " + t);
+                    }
+                });
+            }
+
 
         }
 

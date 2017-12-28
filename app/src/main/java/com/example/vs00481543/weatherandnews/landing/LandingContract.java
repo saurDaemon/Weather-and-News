@@ -1,7 +1,10 @@
 package com.example.vs00481543.weatherandnews.landing;
 
+import android.view.View;
+
 import com.example.vs00481543.weatherandnews.base.BaseView;
 import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
+import com.example.vs00481543.weatherandnews.landing.model.WeatherForecastDetails;
 
 import java.util.List;
 
@@ -24,6 +27,10 @@ public class LandingContract {
         void responseToView(WeatherDetails weatherDetails);
 
         void getLatLong(String str);
+
+        void hideKeyboard(View view);
+
+        void responseToForecastView(WeatherForecastDetails weatherForecastDetails);
 
     }
 

@@ -28,13 +28,15 @@ public class WeatherDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState)
     {
 
-        final View view=inflater.inflate(R.layout.weather_fragment,viewGroup,false);
+        final View view=inflater.inflate(R.layout.weather_constraint,viewGroup,false);
 
         ImageView weatherIcon= (ImageView) view.findViewById(R.id.iconw);
 
         TextView name = (TextView) view.findViewById(R.id.cityName);
         TextView description = (TextView) view.findViewById(R.id.desc);
         TextView temperature = (TextView) view.findViewById(R.id.temp);
+        TextView minTemp=(TextView) view.findViewById(R.id.min_temp);
+        TextView maxTemp=(TextView) view.findViewById(R.id.max_temp);
         TextView pressure = (TextView) view.findViewById(R.id.press);
         TextView humidity = (TextView) view.findViewById(R.id.humid);
         TextView seaLevel = (TextView) view.findViewById(R.id.seaLevel);
@@ -46,13 +48,18 @@ public class WeatherDetailsFragment extends Fragment {
 
             Log.d("Fragment", "onCreateView: "+wd);
 
-            name.setText("City  : "+wd.getName());
-            description.setText(" "+wd.getWeather()[0].getDescription());
-            temperature.setText("Temperature : "+wd.getMain().getTemp());
-            pressure.setText("Pressure : "+wd.getMain().getPressure());
-            humidity.setText("Humidity : "+wd.getMain().getHumidity());
-            seaLevel.setText("Sea Level : "+wd.getMain().getSea_level());
-            windSpeed.setText("Wind speed : "+wd.getWind().getSpeed());
+            name.setText(wd.getName());
+            description.setText(wd.getWeather()[0].getDescription());
+            temperature.setText(wd.getMain().getTemp()+"°c");
+            maxTemp.setText("↑"+wd.getMain().getTemp_max()+"°");
+            minTemp.setText("↓"+wd.getMain().getTemp_min()+"°");
+            pressure.setText(wd.getMain().getPressure());
+            humidity.setText(wd.getMain().getHumidity());
+            if(wd.getMain().getSea_level()==null)
+                seaLevel.setText("Data error");
+            else
+                seaLevel.setText(wd.getMain().getSea_level());
+            windSpeed.setText(wd.getWind().getSpeed());
 
             String iconCode=wd.getWeather()[0].getIcon();
             String url="http://openweathermap.org/img/w/"+iconCode+".png";

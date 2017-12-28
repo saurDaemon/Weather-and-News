@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/today"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"></View>
+
+    <TextView
+        android:id="@+id/today"
+        android:text="Today"
+        android:textStyle="italic"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/cityName"
+        app:layout_constraintRight_toLeftOf="@+id/cityName"/>
+
+    <TextView
+        android:id="@+id/cityName"
+        android:textStyle="italic"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/today"
+        app:layout_constraintLeft_toRightOf="@+id/iconw"
+        app:layout_constraintRight_toLeftOf="@+id/iconw"/>
+
+    <ImageView
+        android:id="@+id/iconw"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/temp"
+        app:layout_constraintTop_toBottomOf="@+id/desc"/>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cityName"
+        app:layout_constraintLeft_toRightOf="@+id/temp"
+        app:layout_constraintRight_toLeftOf="@+id/temp"/>
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/desc"
+        app:layout_constraintLeft_toRightOf="@+id/iconw"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+
+        android:id="@+id/min_temp"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/temp"
+        app:layout_constraintLeft_toLeftOf="@id/temp"
+        app:layout_constraintRight_toLeftOf="@+id/max_temp"/>
+
+    <TextView
+        android:id="@+id/max_temp"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/min_temp"
+        app:layout_constraintRight_toRightOf="@id/temp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/min_temp" />
+
+
+    <TextView
+        android:id="@+id/pressure"
+        android:text="Pressure"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/min_temp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/humidity"/>
+
+    <TextView
+        android:id="@+id/press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@id/pressure"
+        app:layout_constraintLeft_toRightOf="@+id/pressure"
+        app:layout_constraintRight_toLeftOf="@+id/pressure"/>
+
+    <TextView
+        android:id="@+id/humidity"
+        android:text="Humidity"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/pressure"
+        app:layout_constraintRight_toLeftOf="@+id/seaLevel1"
+        app:layout_constraintLeft_toRightOf="@+id/pressure"/>
+
+    <TextView
+        android:id="@+id/humid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@id/humidity"
+        app:layout_constraintLeft_toRightOf="@+id/humidity"
+        app:layout_constraintRight_toLeftOf="@+id/humidity"/>
+
+    <TextView
+        android:id="@+id/seaLevel1"
+        android:text="Sea Level"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@id/humidity"
+        app:layout_constraintLeft_toRightOf="@+id/humidity"
+        app:layout_constraintRight_toRightOf="@+id/windSpeed1"/>
+
+    <TextView
+        android:id="@+id/seaLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@id/seaLevel1"
+        app:layout_constraintLeft_toRightOf="@+id/seaLevel1"
+        app:layout_constraintRight_toLeftOf="@+id/seaLevel1"/>
+
+    <TextView
+        android:id="@+id/windSpeed1"
+        android:text="Wind Speed"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBaseline_toBaselineOf="@+id/seaLevel1"
+        app:layout_constraintLeft_toRightOf="@+id/seaLevel1"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/windSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@id/windSpeed1"
+        app:layout_constraintLeft_toRightOf="@+id/windSpeed1"
+        app:layout_constraintRight_toLeftOf="@+id/windSpeed1"/>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@+id/windSpeed"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"></View>
+
+
+</android.support.constraint.ConstraintLayout>

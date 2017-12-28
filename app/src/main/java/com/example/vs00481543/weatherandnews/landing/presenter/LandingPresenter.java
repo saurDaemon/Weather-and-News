@@ -1,15 +1,19 @@
 package com.example.vs00481543.weatherandnews.landing.presenter;
 
+import android.app.Activity;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.vs00481543.weatherandnews.R;
 import com.example.vs00481543.weatherandnews.Network.NetworkData;
 import com.example.vs00481543.weatherandnews.landing.LandingContract;
 import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
+import com.example.vs00481543.weatherandnews.landing.model.WeatherForecastDetails;
 import com.example.vs00481543.weatherandnews.landing.view.WeatherDetailsFragment;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,9 +41,15 @@ public class LandingPresenter implements LandingContract.LandPresent {
 
 //        new getWeatherData().execute();
         //new NetworkData().getNetworkDataVolley(this,landingContext,lat,longi);
-        new NetworkData().getNetworkDataRetrofit(this,landingContext,lat,longi);
+        new NetworkData().getNetworkDataRetrofit(this,landingContext,lat,longi,"Current");
 
     }
+
+
+    public void getWeatherForecastInfo(double lat,double longi){
+        new NetworkData().getNetworkDataRetrofit(this,landingContext,lat,longi,"Forecast");
+    }
+
 
     @Override
     public void responseToView(WeatherDetails weatherDetails) {
@@ -95,7 +105,21 @@ public class LandingPresenter implements LandingContract.LandPresent {
             }
 
             getWeatherInfo(latitude,longitude);
+            getWeatherForecastInfo(latitude,longitude);
         }
+    }
+
+    @Override
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager=(InputMethodManager) landingContext.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
+    }
+
+    @Override
+    public void responseToForecastView(WeatherForecastDetails weatherForecastDetails) {
+        Log.d("forecast", "responseToForecastView: "+ weatherForecastDetails);
+        Log.d("forecast", "responseToForecastView: "+ weatherForecastDetails.getList()[1].getMain().getTemp());
+        Log.d("forecast", "responseToForecastView: "+ weatherForecastDetails.getList()[2].getDt_txt());
     }
 
 

@@ -12,12 +12,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClientRetrofit {
 
     private static final String WEATHER_URL="http://api.openweathermap.org/data/2.5/";
+    private static Retrofit retrofit;
 
     public static Retrofit getRetrofitClient() {
-        Retrofit retrofit = null;
+       // Retrofit retrofit = null;
         HttpLoggingInterceptor interceptor=new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client=new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
