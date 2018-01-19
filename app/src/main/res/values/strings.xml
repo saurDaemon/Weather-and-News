@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WeatherAndNews</string>
+    <string name="news">News</string>
+    <string name="weather">Weather</string>
+    <string name="location_string">Location</string>
+    <string name="latitude_string">Latitude</string>
+    <string name="longitude_string">Longitude</string>
 </resources>

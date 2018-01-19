@@ -1,0 +1,9 @@
+
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñú…•ùÿÿÿÿ
+osquid:UselessImportCheck"HRemove this unused import 'android.view.inputmethod.InputMethodManager'.(‰­àûÿÿÿÿ
+Rsquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+Rsquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ
+[squid:UselessImportCheck"4Remove this unused import 'android.widget.TextView'.(„Ë‚ˆÿÿÿÿÿ
+Ssquid:UselessImportCheck"1Remove this unused import 'android.app.Activity'.(‡ÊÍÆ
+Tsquid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ
+csquid:MaximumInheritanceDepth"<This class has 8 parents which is greater than 5 authorized.(ö’Æÿ

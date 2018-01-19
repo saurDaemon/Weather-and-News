@@ -18,13 +18,21 @@
 
     <TextView
         android:id="@+id/today"
-        android:text="Today"
         android:textStyle="italic"
         android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/cityName"
         app:layout_constraintRight_toLeftOf="@+id/cityName"/>
+
+
+    <TextView
+        android:id="@+id/timeNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@+id/desc"
+        app:layout_constraintLeft_toLeftOf="@+id/desc"
+        app:layout_constraintBaseline_toBaselineOf="@+id/today"/>
 
     <TextView
         android:id="@+id/cityName"

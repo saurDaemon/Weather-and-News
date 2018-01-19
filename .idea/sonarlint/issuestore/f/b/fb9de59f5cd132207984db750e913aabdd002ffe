@@ -1,0 +1,20 @@
+
+csquid:S1192"IDefine a constant instead of duplicating this literal "retrofit" 6 times.(‰¢ÿ­şÿÿÿÿ
+gsquid:S1192"MDefine a constant instead of duplicating this literal "onResponse: " 3 times.(‰¢ÿ­şÿÿÿÿ
+psquid:S3008"VRename this field "WEATHER_URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(º¹¤«şÿÿÿÿ
+fsquid:S3008"QRename this field "APP_ID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş—ÂÒ
+dsquid:S3008"ORename this field "UNIT" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Âõş£
+isquid:S3008"ORename this field "TYPE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ¼¥‡øÿÿÿÿ
+tsquid:S1450"ZRemove the "WEATHER_URL" field and declare it as a local variable in the relevant methods.(º¹¤«şÿÿÿÿ
+Ksquid:S2696"6Make the enclosing method "static" or remove this set.(İ¤Öø
+Hsquid:S1172".Remove this unused method parameter "context".(›ûÛåúÿÿÿÿ
+Wsquid:S1854"BRemove this useless assignment to local variable "weatherDetails".(ø‚Îô
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(èÔÕªùÿÿÿÿ
+^squid:UselessImportCheck"7Remove this unused import 'com.android.volley.Network'.(õå•Êøÿÿÿÿ
+Vsquid:UselessImportCheck"4Remove this unused import 'java.lang.reflect.Array'.(‡¡É˜
+Vsquid:UselessImportCheck"5Remove this unused import 'com.android.volley.Cache'.(Ãò¯
+Qsquid:UselessImportCheck"/Remove this unused import 'retrofit2.Retrofit'.(ŠĞİ
+ksquid:UselessImportCheck"DRemove this unused import 'com.android.volley.toolbox.BasicNetwork'.(¶›·Óüÿÿÿÿ
+hsquid:UselessImportCheck"ARemove this unused import 'com.android.volley.toolbox.HurlStack'.(Å‡‡úÿÿÿÿ
+qsquid:UselessImportCheck"JRemove this unused import 'retrofit2.converter.gson.GsonConverterFactory'.(ì§¤¹ÿÿÿÿÿ
+hsquid:UselessImportCheck"FRemove this unused import 'com.android.volley.toolbox.DiskBasedCache'.(ú‹Œä

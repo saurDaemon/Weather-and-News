@@ -3,36 +3,28 @@ package com.example.vs00481543.weatherandnews.landing;
 import android.view.View;
 
 import com.example.vs00481543.weatherandnews.base.BaseView;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherForecastDetails;
-
-import java.util.List;
+import com.example.vs00481543.weatherandnews.weather.weatherCurrent.WeatherContract;
 
 /**
- * Created by VS00481543 on 22-11-2017.
+ * Created by VS00481543 on 15-01-2018.
  */
 
 public class LandingContract {
 
     public interface LandingView extends BaseView<LandPresent>
     {
-        void displayText(WeatherDetails weatherDetails);
+        void setUpTabLayout();
 
     }
 
     public interface LandPresent
     {
-        void getWeatherInfo(double lat,double longi);
-
-        void responseToView(WeatherDetails weatherDetails);
 
         void getLatLong(String str);
 
         void hideKeyboard(View view);
 
-        void responseToForecastView(WeatherForecastDetails weatherForecastDetails);
 
     }
-
 
 }

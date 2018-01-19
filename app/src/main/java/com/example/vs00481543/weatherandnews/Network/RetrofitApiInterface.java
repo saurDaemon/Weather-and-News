@@ -1,6 +1,6 @@
 package com.example.vs00481543.weatherandnews.Network;
 
-import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
+import com.example.vs00481543.weatherandnews.weather.weatherCurrent.model.WeatherDetails;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

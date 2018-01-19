@@ -1,4 +1,4 @@
-package com.example.vs00481543.weatherandnews.landing.model;
+package com.example.vs00481543.weatherandnews.weather.weatherCurrent.model;
 
 /**
  * Created by VS00481543 on 21-12-2017.
@@ -128,6 +128,15 @@ public class WeatherForecastDetails {
 
     public class Weather {
         private String description;
+        private String icon;
+
+        public String getIcon() {
+            return icon;
+        }
+
+        public void setIcon(String icon) {
+            this.icon = icon;
+        }
 
         public String getDescription() {
             return description;

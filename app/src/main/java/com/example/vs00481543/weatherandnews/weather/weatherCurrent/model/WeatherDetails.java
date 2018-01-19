@@ -1,6 +1,4 @@
-package com.example.vs00481543.weatherandnews.landing.model;
-
-import com.google.gson.annotations.Expose;
+package com.example.vs00481543.weatherandnews.weather.weatherCurrent.model;
 
 import java.io.Serializable;
 

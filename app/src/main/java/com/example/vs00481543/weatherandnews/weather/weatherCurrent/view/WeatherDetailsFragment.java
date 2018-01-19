@@ -1,4 +1,4 @@
-package com.example.vs00481543.weatherandnews.landing.view;
+package com.example.vs00481543.weatherandnews.weather.weatherCurrent.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,12 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.bumptech.glide.Glide;
 import com.example.vs00481543.weatherandnews.Network.VolleySingleton;
 import com.example.vs00481543.weatherandnews.R;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
-
-import java.lang.reflect.Array;
+import com.example.vs00481543.weatherandnews.weather.weatherCurrent.model.WeatherDetails;
 
 /**
  * Created by VS00481543 on 29-11-2017.
@@ -24,6 +21,8 @@ import java.lang.reflect.Array;
 public class WeatherDetailsFragment extends Fragment {
 
     ImageLoader imageLoader;
+    private String TODAY="Today";
+    private String TIME_NOW="Now";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState)
     {
@@ -33,6 +32,8 @@ public class WeatherDetailsFragment extends Fragment {
         ImageView weatherIcon= (ImageView) view.findViewById(R.id.iconw);
 
         TextView name = (TextView) view.findViewById(R.id.cityName);
+        TextView today=(TextView) view.findViewById(R.id.today);
+        TextView timeNow=(TextView) view.findViewById(R.id.timeNow);
         TextView description = (TextView) view.findViewById(R.id.desc);
         TextView temperature = (TextView) view.findViewById(R.id.temp);
         TextView minTemp=(TextView) view.findViewById(R.id.min_temp);
@@ -49,6 +50,8 @@ public class WeatherDetailsFragment extends Fragment {
             Log.d("Fragment", "onCreateView: "+wd);
 
             name.setText(wd.getName());
+            today.setText(TODAY);
+            timeNow.setText(TIME_NOW);
             description.setText(wd.getWeather()[0].getDescription());
             temperature.setText(wd.getMain().getTemp()+"°c");
             maxTemp.setText("↑"+wd.getMain().getTemp_max()+"°");

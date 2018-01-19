@@ -3,6 +3,7 @@
     package="com.example.vs00481543.weatherandnews">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/weather_launcher"

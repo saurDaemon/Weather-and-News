@@ -1,0 +1,17 @@
+
+isquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ß©ıÿÿÿÿ
+dsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ƒÀ
+dsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶åé
+isquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹‡‘Úúÿÿÿÿ
+isquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äå ÿÿÿÿÿ
+isquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÈÇ÷ûÿÿÿÿ
+isquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÏ¾Çşÿÿÿÿ
+dsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾çè
+lsquid:S00116"QRename this field "dt_txt" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ïÿûğúÿÿÿÿ
+isquid:S00116"SRename this field "temp_min" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßˆºº
+nsquid:S00116"SRename this field "temp_max" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰£„£øÿÿÿÿ
+osquid:S00116"TRename this field "sea_level" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç¿øÄüÿÿÿÿ
+gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ƒÀ
+lsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹‡‘Úúÿÿÿÿ
+lsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òÈÇ÷ûÿÿÿÿ
+gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾çè

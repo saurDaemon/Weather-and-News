@@ -1,88 +1,37 @@
 package com.example.vs00481543.weatherandnews.landing.presenter;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.example.vs00481543.weatherandnews.R;
-import com.example.vs00481543.weatherandnews.Network.NetworkData;
 import com.example.vs00481543.weatherandnews.landing.LandingContract;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherForecastDetails;
-import com.example.vs00481543.weatherandnews.landing.view.WeatherDetailsFragment;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.vs00481543.weatherandnews.sharedPreferencesManager.PreferencesManager;
 
 import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by VS00481543 on 22-11-2017.
+ * Created by VS00481543 on 15-01-2018.
  */
 
 public class LandingPresenter implements LandingContract.LandPresent {
-    AppCompatActivity landingContext;
-    LandingContract.LandingView landView;
+    LandingContract.LandingView landingView;
+    AppCompatActivity context;
+    PreferencesManager preferencesManager;
 
-    public LandingPresenter(LandingContract.LandingView landView1, AppCompatActivity context)
+    public LandingPresenter(LandingContract.LandingView landingView1, AppCompatActivity context1)
     {
-        landingContext=context;
-        this.landView=landView1;
-        landView.setPresenter(this);
+        landingView=landingView1;
+        context=context1;
+        preferencesManager=new PreferencesManager(context);
+        landingView.setPresenter(this);
     }
 
-    @Override
-    public void getWeatherInfo(double lat,double longi) {
-
-//        new getWeatherData().execute();
-        //new NetworkData().getNetworkDataVolley(this,landingContext,lat,longi);
-        new NetworkData().getNetworkDataRetrofit(this,landingContext,lat,longi,"Current");
-
-    }
-
-
-    public void getWeatherForecastInfo(double lat,double longi){
-        new NetworkData().getNetworkDataRetrofit(this,landingContext,lat,longi,"Forecast");
-    }
-
-
-    @Override
-    public void responseToView(WeatherDetails weatherDetails) {
-
-        if(weatherDetails!=null)
-        {
-
-              Log.d("", "responseToView: "+ weatherDetails);
-
-              WeatherDetailsFragment frag=new WeatherDetailsFragment();
-              Bundle bundle=new Bundle();
-              bundle.putSerializable("weatherObject", weatherDetails);
-              frag.setArguments(bundle);
-              landingContext.getSupportFragmentManager().beginTransaction().replace(R.id.frame,frag).commit();
-
-
-   // landView.displayText(weatherDetails);
-
-            /*try {
-                JSONObject jsonObject = new JSONObject(str);
-                JSONObject coord=jsonObject.getJSONObject("coord");
-                String lat=coord.getString("lat");
-                String lon=coord.getString("lon");
-
-                Log.d("Response", "responseToView: "+lat+"  "+lon);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }*/
-
-             }
-             Log.d("Response", "responseToView: "+weatherDetails);
-    }
 
     @Override
     public void getLatLong(String location) {
@@ -91,7 +40,7 @@ public class LandingPresenter implements LandingContract.LandPresent {
         if(Geocoder.isPresent())
         {
             try {
-                Geocoder gc=new Geocoder(landingContext);
+                Geocoder gc=new Geocoder(context);
                 List<Address> addresses=gc.getFromLocationName(location,1);
 
                 if(addresses.size()>0)
@@ -103,45 +52,22 @@ public class LandingPresenter implements LandingContract.LandPresent {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            getWeatherInfo(latitude,longitude);
-            getWeatherForecastInfo(latitude,longitude);
         }
+
+        Log.d("LandingPresenter", "getLatLong: "+latitude+"   "+longitude);
+
+        String lati=Double.toString(latitude);
+        String longi=Double.toString(longitude);
+
+        preferencesManager.setStringPref("Latitude",lati);
+        preferencesManager.setStringPref("Longitude",longi);
+
+        landingView.setUpTabLayout();
     }
 
     @Override
     public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager=(InputMethodManager) landingContext.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager=(InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
     }
-
-    @Override
-    public void responseToForecastView(WeatherForecastDetails weatherForecastDetails) {
-        Log.d("forecast", "responseToForecastView: "+ weatherForecastDetails);
-        Log.d("forecast", "responseToForecastView: "+ weatherForecastDetails.getList()[1].getMain().getTemp());
-        Log.d("forecast", "responseToForecastView: "+ weatherForecastDetails.getList()[2].getDt_txt());
-    }
-
-
-
-
-
-    /*private class getWeatherData extends AsyncTask<String,String,String>
-    {
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            String resp="";
-            HttpHandler httpHandler=new HttpHandler();
-            try {
-                resp=httpHandler.makeServiceCall(jsonUrl);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Log.d("Response", "doInBackground: "+resp);
-            return null;
-        }
-    }*/
 }

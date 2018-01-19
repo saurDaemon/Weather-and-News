@@ -1,0 +1,14 @@
+
+<squid:S1659"'Declare "longitude" on a separate line.(«­ÌØ
+csquid:S1192"IDefine a constant instead of duplicating this literal "forecast" 4 times.(ğíñûÿÿÿÿ
+ssquid:S1192"YDefine a constant instead of duplicating this literal "responseToForecastView: " 3 times.(ğíñûÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¿Ö†ÿÿÿÿÿ
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ğ‹’´ùÿÿÿÿ
+`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(½‘Ñ³
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(ÒÌâ–øÿÿÿÿ
+squid:UselessImportCheck"iRemove this unused import 'com.example.vs00481543.weatherandnews.landing.adapter.CurrentForecastAdapter'.(¨¼‡Âıÿÿÿÿ
+_squid:UselessImportCheck"8Remove this unused import 'com.google.gson.GsonBuilder'.(”«à¬ÿÿÿÿÿ
+esquid:UselessImportCheck"CRemove this unused import 'android.support.v7.widget.RecyclerView'.(ÊŠáó
+Ssquid:UselessImportCheck"1Remove this unused import 'com.google.gson.Gson'.(–§
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Ssquid:S1155">Use isEmpty() to check whether the collection is empty or not.(÷î

@@ -1,0 +1,5 @@
+
+esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(÷£óÉýÿÿÿÿ
+ksquid:S00116"PRename this field "TODAY" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(è˜Äûÿÿÿÿ
+isquid:S00116"SRename this field "TIME_NOW" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ã‡õö
+Vsquid:UselessImportCheck"4Remove this unused import 'java.lang.reflect.Array'.(‡¡É˜

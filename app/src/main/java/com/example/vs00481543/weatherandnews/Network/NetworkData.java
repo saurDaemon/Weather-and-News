@@ -4,28 +4,19 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.Cache;
-import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.BasicNetwork;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
-import com.example.vs00481543.weatherandnews.landing.LandingContract;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherDetails;
-import com.example.vs00481543.weatherandnews.landing.model.WeatherForecastDetails;
+import com.example.vs00481543.weatherandnews.weather.weatherCurrent.WeatherContract;
+import com.example.vs00481543.weatherandnews.weather.weatherCurrent.model.WeatherDetails;
+import com.example.vs00481543.weatherandnews.weather.weatherCurrent.model.WeatherForecastDetails;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.lang.reflect.Array;
-
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by VS00481543 on 23-11-2017.
@@ -38,7 +29,7 @@ public class NetworkData {
         private static String UNIT="metric" ;
         private static String TYPE="accurate";
 
-        public void getNetworkDataVolley(final LandingContract.LandPresent landPresent, final Context context,double latitude,double longitude)
+        public void getNetworkDataVolley(final WeatherContract.WeatherPresent weatherPresent, final Context context, double latitude, double longitude)
         {
 
             WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&units=metric&type=accurate&APPID=ec6cba60275372b25bed284fded6205d";
@@ -54,7 +45,7 @@ public class NetworkData {
 
                     WeatherDetails weatherDetails = new WeatherDetails();
                     weatherDetails = mGson.fromJson(response,WeatherDetails.class);
-                    landPresent.responseToView(weatherDetails);
+                    weatherPresent.responseToView(weatherDetails);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -67,7 +58,7 @@ public class NetworkData {
         }
 
 
-        public void getNetworkDataRetrofit(final LandingContract.LandPresent landPresent,final Context context,double latitude,double longitude,String typeRequest)
+        public void getNetworkDataRetrofit(final WeatherContract.WeatherPresent weatherPresent, final Context context, double latitude, double longitude, String typeRequest)
         {
             if(typeRequest.equals("Current")) {
                 RetrofitApiInterface apiService = ApiClientRetrofit.getRetrofitClient().create(RetrofitApiInterface.class);
@@ -78,7 +69,7 @@ public class NetworkData {
                     public void onResponse(Call<WeatherDetails> call, retrofit2.Response<WeatherDetails> response) {
                         if (response.isSuccessful()) {
                             Log.d("retrofit", "onResponse: " + response.body());
-                            landPresent.responseToView(response.body());
+                            weatherPresent.responseToView(response.body());
                         }
                         Log.d("retrofit", "onResponse: " + "fail");
 
@@ -101,7 +92,7 @@ public class NetworkData {
                     public void onResponse(Call<WeatherForecastDetails> call, retrofit2.Response<WeatherForecastDetails> response) {
                         if (response.isSuccessful()) {
                             Log.d("retrofit", "onResponse: forecast  :" + response.body());
-                            landPresent.responseToForecastView(response.body());
+                            weatherPresent.responseToForecastView(response.body());
                         }
                         Log.d("retrofit", "onResponse: " + "fail");
                     }
